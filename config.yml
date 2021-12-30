@@ -9,5 +9,7 @@ pyms:
     DEBUG: false
     APP_NAME: meli-mutants
     APPLICATION_ROOT : ""
-    CONNECTION_DATABASE: "x"
-    
+    CONNECTION_DATABASE: "xxxxx"
+    CACHE_HOST: 0.0.0.0
+    CACHE_PORT: 11211
+    CACHE_EXPIRATION_TIME: 86400

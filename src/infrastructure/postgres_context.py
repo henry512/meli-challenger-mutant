@@ -40,7 +40,7 @@ class PostgresContext(IPostgresContext):
                 except Exception:
                     if cursor is not None:
                         cnx.rollback()
-                    print(f"Exception has occurred: \n Query: {query} \n")
+                    print(f"Postgres Exception has occurred: \n Query: {query} \n")
                     raise
 
     def execute_query(self, query: str) -> None:
@@ -52,7 +52,7 @@ class PostgresContext(IPostgresContext):
                 except Exception:
                     if cursor is not None:
                         cnx.rollback()
-                    print(f"Exception has occurred: \n Query: {query} \n")
+                    print(f"Postgres Exception has occurred: \n Query: {query} \n")
                     raise
 
     def _get_connection(self) -> Any:

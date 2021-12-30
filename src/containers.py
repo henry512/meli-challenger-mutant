@@ -2,7 +2,8 @@ from injector import Binder, singleton
 from src.repositories import IMutantRepository, MutantRepository
 from src.config import IConfiguration, Configuration
 from src.services import IMutantService, MutantService
-from src.infrastructure import IPostgresContext, PostgresContext
+from src.infrastructure import IPostgresContext, PostgresContext, IMemcachedContext, MemcachedContext
+
 
 def container(binder: Binder):
     binder.bind(
@@ -23,5 +24,10 @@ def container(binder: Binder):
     binder.bind(
         IPostgresContext,
         to=PostgresContext,
+        scope=singleton,
+    )
+    binder.bind(
+        IMemcachedContext,
+        to=MemcachedContext,
         scope=singleton,
     )

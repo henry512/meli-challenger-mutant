@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from injector import inject
 from src.domains import DNAEntity, DNAStatisticsDto, DNAOriginEnum
 from src.repositories import IMutantRepository
-
+from src.infrastructure import IMemcachedContext
 
 class IMutantService(ABC):
     @abstractmethod
@@ -20,8 +20,9 @@ class IMutantService(ABC):
 
 class MutantService(IMutantService):
     @inject
-    def __init__(self, repository: IMutantRepository):
+    def __init__(self, repository: IMutantRepository, cache: IMemcachedContext):
         self._repository = repository
+        self._cache = cache
         
     def save_dna(self, dna: DNAEntity) -> None:
         print("save dna repository")
