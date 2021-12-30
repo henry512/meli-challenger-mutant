@@ -1,8 +1,6 @@
 from abc import ABC, abstractmethod
 from injector import inject
-from src.domains import DNAEntity
-from src.domains import DNAStatisticsDto
-from src.domains import DNAOriginEnum
+from src.domains import DNAEntity, DNAStatisticsDto, DNAOriginEnum
 from src.repositories import IMutantRepository
 
 
@@ -29,6 +27,7 @@ class MutantService(IMutantService):
         print("save dna repository")
 
     def get_dna(self, key: str) -> DNAEntity:
+        self._repository.get_dna("key")
         return DNAEntity(
             sequence=["DNA"],
             origin=DNAOriginEnum.HUMAN.value

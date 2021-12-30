@@ -4,7 +4,8 @@ from src.containers import container
 
 
 class App:
-    def run(self):
+    @staticmethod
+    def run():
         try:
             ms = Microservice(path=__file__)
             app = ms.create_app()

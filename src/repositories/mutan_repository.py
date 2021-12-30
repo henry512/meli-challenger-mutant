@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import Any, Dict
+from injector import inject
 from src.domains import DNAEntity
+from src.infrastructure import IPostgresContext
 
 
 class IMutantRepository(ABC):
@@ -18,6 +20,10 @@ class IMutantRepository(ABC):
 
 
 class MutantRepository(IMutantRepository):
+    @inject
+    def __init__(self, context: IPostgresContext):
+        self._context = context
+
     def save_dna(self, dna: DNAEntity) -> None:
         print("save dna repository")
 

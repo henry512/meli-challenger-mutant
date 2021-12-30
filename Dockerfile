@@ -3,8 +3,7 @@ FROM python:3.8.5-slim-buster
 COPY . /app
 WORKDIR /app
 
-# RUN apt-get update && apt-get install -y gunicorn gevent
-RUN pip install wheel && pip install -r requirements/base.txt
+RUN pip install wheel gunicorn gevent && pip install -r requirements/base.txt 
 
 EXPOSE 5000
 CMD ["python", "-u" , "main.py", "runserver"]

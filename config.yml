@@ -9,3 +9,5 @@ pyms:
     DEBUG: false
     APP_NAME: meli-mutants
     APPLICATION_ROOT : ""
+    CONNECTION_DATABASE: "x"
+    
