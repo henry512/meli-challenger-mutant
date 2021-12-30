@@ -1,0 +1,11 @@
+pyms: 
+  services:
+    swagger:
+      path: ""
+      file: "infrastructure/swagger.yml"
+      url: "/ws-doc/"
+      project_dir: "src.cotrollers"
+  config:
+    DEBUG: false
+    APP_NAME: meli-mutants
+    APPLICATION_ROOT : ""
