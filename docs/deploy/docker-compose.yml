@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  memcached:
+      image: memcached:1.6.9
+      restart: always
+      ports:
+          - 11211:11211
+      networks:
+          - meli-mutants
+
+  postgres:
+      image: postgres:12.9
+      restart: always
+      ports:
+          - 5432:5432
+      networks:
+          - meli-mutants
+
+  publications-api:
+      image: henryj/api-meli-mutants
+      restart: always
+      ports:
+          - 5000:5000
+      networks:
+          - meli-mutants
+
+networks:
+    meli-mutants:

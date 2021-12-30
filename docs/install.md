@@ -9,7 +9,8 @@
 Create a new python environment in `.env` folder:
 
 ```bash
-virtualend env --python=python3.8
+pip install virtualenv
+virtualenv env --python=python3.8
 ```
 
 Set the new python environment:
@@ -22,5 +23,5 @@ Update `pip` package and install requirements for development environment:
 
 ```bash
 pip install --upgrade pip
-pip install -r requirements/base.txt
+pip install -r requirements/development.txt
 ```
