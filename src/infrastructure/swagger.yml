@@ -1,0 +1,45 @@
+---
+swagger: "2.0"
+info:
+  description: "Microservice mutantes"
+  version: "1.0.0"
+  title: "lista de endpoint de mutantes"
+  termsOfService: "https://www.mercadolibre.com.co"
+schemes:
+  - "http"
+paths:
+  /stats:
+    get:
+        tags:
+          - "mutants"
+        summary: "Obtiene las estadisticas de las verificaciones de ADN"
+        operationId: "stats"
+        produces:
+          - "application/json"
+        responses:
+          200:
+            description: "Ok"
+          500:
+            description: "Server error."
+        x-swagger-router-controller: "src.controllers.mutants"
+  /mutant:
+      post:
+        tags:
+          - "mutants"
+        summary: "Verifica que el ADN sea de un mutante o humano"
+        operationId: "mutant"
+        produces:
+          - "application/json"
+        responses:
+          200:
+            description: "Ok"
+          400:
+            description: "Bad request."
+          403:
+            description: "Forbidden"
+          500:
+            description: "Server error."
+        x-swagger-router-controller: "src.controllers.mutants"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"

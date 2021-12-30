@@ -1,0 +1,4 @@
+py-ms[all]==2.4.0
+dependency_injector==4.37.0
+Flask-Injector==0.12.3
+pypika==0.37.16
