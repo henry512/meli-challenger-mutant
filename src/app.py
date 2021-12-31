@@ -10,6 +10,6 @@ class App:
             ms = Microservice(path=__file__)
             app = ms.create_app()
             FlaskInjector(app=app, modules=[container])
-            app.run()
+            app.run(host="0.0.0.0")
         except Exception:
             exit()
