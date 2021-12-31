@@ -9,7 +9,8 @@ pyms:
     DEBUG: false
     APP_NAME: meli-mutants
     APPLICATION_ROOT : ""
-    CONNECTION_DATABASE: "xxxxx"
+    CONNECTION_DATABASE: "postgresql://postgres:root@localhost/postgres"
     CACHE_HOST: 0.0.0.0
     CACHE_PORT: 11211
     CACHE_EXPIRATION_TIME: 86400
+    DATABASE_TABLE_DNA: "dna"

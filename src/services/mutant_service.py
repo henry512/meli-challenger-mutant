@@ -3,6 +3,7 @@ from injector import inject
 from src.domains import DNAEntity, DNAStatisticsDto, DNAOriginEnum
 from src.repositories import IMutantRepository
 from src.infrastructure import IMemcachedContext
+from typing import List, Optional
 
 class IMutantService(ABC):
     @abstractmethod
@@ -10,7 +11,7 @@ class IMutantService(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def get_dna(self, key: str) -> DNAEntity:
+    def get_dna(self, dna: List[str]) -> Optional[DNAEntity]:
         raise NotImplementedError
 
     @abstractmethod
@@ -25,14 +26,15 @@ class MutantService(IMutantService):
         self._cache = cache
         
     def save_dna(self, dna: DNAEntity) -> None:
-        print("save dna repository")
+        self._repository.save_dna(dna)
 
-    def get_dna(self, key: str) -> DNAEntity:
-        self._repository.get_dna("key")
-        return DNAEntity(
-            sequence=["DNA"],
-            origin=DNAOriginEnum.HUMAN.value
-        )
+    def get_dna(self, dna: List[str]) -> Optional[DNAEntity]:
+        dna_exists = self._repository.get_dna(dna)
+        if dna_exists:
+            return DNAEntity(
+                sequence=dna_exists["sequence"],
+                origin=dna_exists["origin"]
+            )
 
     def get_statistics(self) -> DNAStatisticsDto:
         return DNAStatisticsDto(

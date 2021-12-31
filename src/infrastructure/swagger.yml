@@ -28,6 +28,19 @@ paths:
           - "mutants"
         summary: "Verifica que el ADN sea de un mutante o humano"
         operationId: "mutant"
+        parameters:
+          - in: body
+            name: query
+            description: Sequence DNA
+            schema:
+              type: object
+              required:
+                - dna
+              properties:
+                dna:
+                  type: array
+                  items:
+                    type: string
         produces:
           - "application/json"
         responses:

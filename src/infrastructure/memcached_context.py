@@ -32,16 +32,16 @@ class MemcachedContext(IMemcachedContext):
         cnx = self._get_connection()
         try:
             return cnx.get(key)
-        except Exception:
-            print(f"Memcached Exception has occurred: \n Key: {key} \n")
+        except Exception as error:
+            print(f"Memcached Exception has occurred: \n Error: {error} \n Key: {key} \n")
             raise
 
     def set(self, key: str, data: Any):
         cnx = self._get_connection()
         try:
             cnx.set(key, data, expire=self._cache_exp_time)
-        except Exception:
-            print(f"Memcached Exception has occurred: \n Key: {key} \n")
+        except Exception as error:
+            print(f"Memcached Exception has occurred: \n Error: {error} \n Key: {key} \n")
             raise
 
     def _get_connection(self) -> Any:
