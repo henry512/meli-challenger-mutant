@@ -1,8 +1,5 @@
-from typing import Any, Dict
 from injector import inject
-from src import services
-from src.domains import DNAEntity
-from src.domains import DNAOriginEnum
+from src.domains import DNAEntity, DNAOriginEnum
 from src.services import IMutantService
 from flask import jsonify
 from src.utils import DNA
@@ -27,5 +24,4 @@ def mutant(service: IMutantService, query):
 
 @inject
 def stats(service: IMutantService):
-    statistics = service.get_statistics()
-    return jsonify(statistics), 200
+    return jsonify(service.get_statistics()), 200

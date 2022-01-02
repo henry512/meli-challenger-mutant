@@ -1,7 +1,7 @@
 ---
 swagger: "2.0"
 info:
-  description: "Microservice mutantes"
+  description: "Microservice Mercado libre mutantes"
   version: "1.0.0"
   title: "lista de endpoint de mutantes"
   termsOfService: "https://www.mercadolibre.com.co"

@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
 from typing import Any, Dict, List, Optional
 from injector import inject
-from src.domains import DNAEntity
+from pypika.queries import QueryBuilder
+from src.domains import DNAEntity, DNAOriginEnum
 from src.infrastructure import IPostgresContext
-from src.utils import encode_data, decode_data
-from pypika import PostgreSQLQuery as Query, Table
+from pypika import PostgreSQLQuery as Query, Table, functions as fn
 from src.config import IConfiguration
 from psycopg2.errors import UniqueViolation
 from pandas import DataFrame
@@ -29,41 +29,54 @@ class MutantRepository(IMutantRepository):
     def __init__(self, context: IPostgresContext, configuration: IConfiguration):
         self._context = context
         self._config = configuration.config
+        self._table = Table(self._config["DATABASE_TABLE_DNA"])
 
     def save_dna(self, dna: DNAEntity) -> None:
-        dna_sequence: str = encode_data("-".join(dna["sequence"]))
+        dna_sequence: str = "-".join(dna["sequence"])
         dna_origin: str = dna["origin"].value
 
-        query = Query \
-            .into(Table(self._config["DATABASE_TABLE_DNA"])) \
-                .columns("sequence", "origin")\
-                .insert(dna_sequence, dna_origin)
+        query: QueryBuilder = (
+            Query.into(self._table)
+            .columns(self._table.sequence, self._table.origin)
+            .insert(dna_sequence, dna_origin)
+        )
         try:
             self._context.execute_query(query.get_sql())
         except UniqueViolation:
             return
-        
 
     def get_dna(self, dna: List[str]) -> Optional[Dict[str, Any]]:
-        dna_sequence: str = encode_data("-".join(dna))
-
-        table = Table(self._config["DATABASE_TABLE_DNA"])
-        query = Query \
-            .from_(table) \
-            .select(table.sequence,
-                    table.origin) \
-            .where((table.sequence == dna_sequence))
-
-        dna_exists: DataFrame = self._context.find(query.get_sql())
-        if not dna_exists.empty:
-            return {
-                "sequence": decode_data(dna_exists["sequence"][0]).split("-"),
-                "origin": dna_exists["origin"][0]
-            }
+        raise NotImplementedError
 
     def get_statistics(self) -> Dict[str, int]:
-        return {
-            "mutan": 0,
-            "human": 0
+        query: QueryBuilder = (
+            Query.from_(self._table)
+            .select(
+                (fn.Count("*")).as_("count_dna"),
+                self._table.origin,
+            )
+            .groupby(
+                self._table.origin,
+            )
+        )
+
+        data_stats: Dict[str, Any] = {
+            "mutant": 0,
+            "human": 0,
+            "ratio": 0.0
         }
+
+        result: DataFrame = self._context.find(query.get_sql())
+        if not result.empty:
+            mutant_count_dna = result["count_dna"][result["origin"] == DNAOriginEnum["MUTANT"].value]
+            human_count_dna = result["count_dna"][result["origin"] == DNAOriginEnum["HUMAN"].value]
+
+            data_stats["human"] = int(human_count_dna) if not human_count_dna.empty else 0
+            data_stats["mutant"] = int(mutant_count_dna) if not mutant_count_dna.empty else 0
+            try:
+                data_stats["ratio"] = round(data_stats["human"] / data_stats["mutant"], 2)
+            except ZeroDivisionError:
+                data_stats["ratio"] = 0.0
+
+        return data_stats
 
