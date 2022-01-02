@@ -45,12 +45,12 @@ def test_dna_sequence_exception(data):
 
 
 @pytest.mark.parametrize("data", dna_sequence_value_exception)
-def test_dna_sequence_exception(data):
+def test_dna_sequence_value_exception(data):
     with pytest.raises(DNASequenceValuesException):
         DNA(data).is_mutant()
 
 
 @pytest.mark.parametrize("data", dna_type_exception)
-def test_dna_sequence_exception(data):
+def test_dna_type_exception(data):
     with pytest.raises(DNAParametersTypeException):
         DNA(data)
