@@ -72,9 +72,9 @@ def test_dna_type_exception_is_bad_request(data):
 
 # Factories Dependencies
 def mock_services_mutants():
-    service = MagicMock(IMutantService)
-    service.save_dna = Mock(return_value=None)
-    service.get_statistics = Mock(
+    mock = MagicMock(IMutantService)
+    mock.save_dna = Mock(return_value=None)
+    mock.get_statistics = Mock(
         return_value=DNAStatisticsDto(count_human_dna=100, count_mutant_dna=40, ratio=0.4)
     )
-    return service
+    return mock

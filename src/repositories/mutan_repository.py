@@ -67,7 +67,7 @@ class MutantRepository(IMutantRepository):
             data_stats["human"] = int(human_count_dna) if not human_count_dna.empty else 0
             data_stats["mutant"] = int(mutant_count_dna) if not mutant_count_dna.empty else 0
             try:
-                data_stats["ratio"] = round(data_stats["human"] / data_stats["mutant"], 2)
+                data_stats["ratio"] = round(data_stats["mutant"] / data_stats["human"], 2)
             except ZeroDivisionError:
                 data_stats["ratio"] = 0.0
 

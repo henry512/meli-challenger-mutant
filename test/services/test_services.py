@@ -11,7 +11,7 @@ def test_save_dna():
     service = MutantService(mock_repository_mutants())
     service.save_dna(
         DNAEntity(
-            origin=DNAOriginEnum["MUTANT"].value, 
+            origin=DNAOriginEnum["MUTANT"], 
             sequence=["CTGGCC", "TATACC", "TCGGTG", "TTAATG", "TCATTT", "AGCTTG"]
         )
     )
@@ -25,16 +25,16 @@ def test_get_statistics():
 
 # Factories Dependencies
 def mock_repository_mutants(side_effect_exception=None):
-    service = MagicMock(IMutantRepository)
+    mock = MagicMock(IMutantRepository)
     if side_effect_exception:
-        service.save_dna = Mock(return_value=side_effect_exception)
+        mock.save_dna = Mock(return_value=side_effect_exception)
     else:
-        service.save_dna = Mock(return_value=None)
-    service.get_statistics = Mock(
+        mock.save_dna = Mock(return_value=None)
+    mock.get_statistics = Mock(
         return_value={
             "mutant": 0,
             "human": 0,
             "ratio": 0.0
         }
     )
-    return service
+    return mock
