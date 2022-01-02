@@ -1,6 +1,8 @@
 from typing import Generator, List, Set
 import re
-from src.exceptions import DNASequenceValuesException, DNASequenceException
+from src.exceptions import (
+    DNASequenceValuesException, DNASequenceException, DNAParametersTypeException
+)
 
 
 class DNA:
@@ -15,6 +17,9 @@ class DNA:
         source= ./docs/Examen Mercadolibre - Mutants.pdf
     """
     def __init__(self, dna: List[str], characters: str = "ACGT"):
+        if not isinstance(dna, list) or not isinstance(characters, str):
+            raise DNAParametersTypeException
+
         self._matrix = dna
         self._characters = characters
         self._min_length_dna = 4
@@ -65,12 +70,11 @@ class DNA:
             DNASequenceException
             DNASequenceValuesException
         """
-        if not (len(self._matrix) >= self._min_length_dna):
+        if (not (len(self._matrix) >= self._min_length_dna)) \
+            or (not (self._min_length_character >= len(self._characters))) \
+            or (not all([len(self._matrix) == len(value) for value in self._matrix])):
             raise DNASequenceException
-        if not (self._min_length_character >= len(self._characters)):
-            raise DNASequenceException
-        if not all([len(self._matrix) == len(value) for value in self._matrix]):
-            raise DNASequenceException
+            
         if not all([len(self._regex_dna_word.findall(value)) > 0 for value in self._matrix]):
             raise DNASequenceValuesException
 
