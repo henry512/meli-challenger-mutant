@@ -2,17 +2,11 @@ from abc import ABC, abstractmethod
 from injector import inject
 from src.domains import DNAEntity, DNAStatisticsDto
 from src.repositories import IMutantRepository
-from src.infrastructure import IMemcachedContext
-from typing import List, Optional
 
 
 class IMutantService(ABC):
     @abstractmethod
     def save_dna(self, dna: DNAEntity) -> None:
-        raise NotImplementedError
-
-    @abstractmethod
-    def get_dna(self, dna: List[str]) -> Optional[DNAEntity]:
         raise NotImplementedError
 
     @abstractmethod
@@ -27,9 +21,6 @@ class MutantService(IMutantService):
         
     def save_dna(self, dna: DNAEntity) -> None:
         self._repository.save_dna(dna)
-
-    def get_dna(self, dna: List[str]) -> Optional[DNAEntity]:
-        raise NotImplementedError
 
     def get_statistics(self) -> DNAStatisticsDto:
         result = self._repository.get_statistics()

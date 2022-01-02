@@ -8,8 +8,6 @@ omit=
     src/exceptions/*
     src/containers.py
     src/app.py
-    src\utils\cache_json_serde.py
-    src\utils\data_serialize.py
 
 [html]
 directory = test/coverage_report

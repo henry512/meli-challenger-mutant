@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict
 from injector import inject
 from pypika.queries import QueryBuilder
 from src.domains import DNAEntity, DNAOriginEnum
@@ -13,10 +13,6 @@ from pandas import DataFrame
 class IMutantRepository(ABC):
     @abstractmethod
     def save_dna(self, dna: DNAEntity) -> None:
-        raise NotImplementedError
-
-    @abstractmethod
-    def get_dna(self, dna: List[str]) -> Optional[Dict[str, Any]]:
         raise NotImplementedError
 
     @abstractmethod
@@ -44,9 +40,6 @@ class MutantRepository(IMutantRepository):
             self._context.execute_query(query.get_sql())
         except UniqueViolation:
             return
-
-    def get_dna(self, dna: List[str]) -> Optional[Dict[str, Any]]:
-        raise NotImplementedError
 
     def get_statistics(self) -> Dict[str, int]:
         query: QueryBuilder = (
