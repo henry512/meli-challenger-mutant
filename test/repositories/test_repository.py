@@ -6,7 +6,6 @@ from src.infrastructure import IPostgresContext
 from src.config import IConfiguration
 from src.domains import DNAEntity, DNAOriginEnum
 from psycopg2.errors import UniqueViolation
-import pytest
 
 
 app = flask.Flask(__name__)
@@ -30,7 +29,6 @@ def test_save_dna_unique_constrains_exception():
     context = mock_context(side_effect)
     configuration = mock_configuration()
     repository = MutantRepository(context, configuration)
-    # with pytest.raises(UniqueViolation):
     repository.save_dna(
         DNAEntity(
             origin=DNAOriginEnum["MUTANT"], 

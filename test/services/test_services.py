@@ -2,7 +2,7 @@ import flask
 from unittest.mock import MagicMock, Mock
 from src.repositories import IMutantRepository
 from src.services import MutantService
-from src.domains import DNAStatisticsDto, DNAEntity, DNAOriginEnum
+from src.domains import DNAEntity, DNAOriginEnum
 
 
 app = flask.Flask(__name__)
