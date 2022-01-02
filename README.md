@@ -24,6 +24,15 @@ python3 main.py runserver
 ```
 
 ## Build and Test
+### Run Test
+```bash
 pytest -vs test
+```
+### Run Test and Coverage
+```bash
 pytest -v --cov src --cov-report html test
+```
+### Run Test and Coverage include file .coveragerc
+```bash
 pytest -v --cov src --cov-report html --cov-config=.coveragerc test
+```
