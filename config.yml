@@ -9,5 +9,5 @@ pyms:
     DEBUG: false
     APP_NAME: meli-mutants
     APPLICATION_ROOT : ""
-    CONNECTION_DATABASE: "postgresql://postgres:4N45Ep8NTrq@18.228.175.124/postgres"
+    CONNECTION_DATABASE: "postgresql://postgres:4N45Ep8NTrq@http://ec2-18-228-175-124.sa-east-1.compute.amazonaws.com/postgres"
     DATABASE_TABLE_DNA: "dna"
