@@ -1,4 +1,3 @@
-import flask
 from unittest.mock import MagicMock, Mock
 from pandas.core.frame import DataFrame
 from src.repositories import MutantRepository
@@ -6,9 +5,6 @@ from src.infrastructure import IPostgresContext
 from src.config import IConfiguration
 from src.domains import DNAEntity, DNAOriginEnum
 from psycopg2.errors import UniqueViolation
-
-
-app = flask.Flask(__name__)
 
 
 def test_save_dna():

@@ -1,11 +1,8 @@
-import flask
 from unittest.mock import MagicMock, Mock
 from src.repositories import IMutantRepository
 from src.services import MutantService
 from src.domains import DNAEntity, DNAOriginEnum
 
-
-app = flask.Flask(__name__)
 
 def test_save_dna():
     service = MutantService(mock_repository_mutants())
