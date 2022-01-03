@@ -36,7 +36,7 @@ pytest -v --cov src --cov-report html test
 ```bash
 pytest -v --cov src --cov-report html --cov-config=.coveragerc test
 ```
-### Run Automatic Test with https://locust.io
+### Run Integratión Test with https://locust.io
 ```bash
-locust -f test/automatic_test.py
+locust -f test/automatic_test.py --host=http://ec2-18-228-175-124.sa-east-1.compute.amazonaws.com:5000
 ```
