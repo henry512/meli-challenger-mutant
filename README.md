@@ -36,3 +36,7 @@ pytest -v --cov src --cov-report html test
 ```bash
 pytest -v --cov src --cov-report html --cov-config=.coveragerc test
 ```
+### Run Automatic Test with https://locust.io
+```bash
+locust -f test/automatic_test.py
+```
