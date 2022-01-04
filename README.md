@@ -1,5 +1,7 @@
 # meli-challenger-mutant
-Proyecto de evaluación propuesto por Mercado Libre
+![image](https://user-images.githubusercontent.com/34389493/148126967-21fe6558-ecab-41d9-844a-af73d38b32ec.png)
+
+Proyecto de evaluación propuesto por Mercado Libre para la ocupación del puesto Sr. Development Analyst. #Meli #meli #ADNMeli #MercadoLibre
 
 ## Introduction
 meli-challenger-mutant comprende las funcionalidades y microservicios para el procesamiento y disponibilizacion de estadistica de secuencias de ADN en relación a su origen humano o mutante.
