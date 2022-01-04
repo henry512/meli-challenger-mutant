@@ -46,5 +46,5 @@ pytest -v --cov src --cov-report html --cov-config=.coveragerc test
 
 ### Endpoints Collections
 #### Postman: ./docs/meli-mutants.postman_collection.json
-#### Swagger: ./src/infrastructure/swagger.yml
+#### Swagger: ./src/infrastructure/swagger.yml  or  http://ec2-18-228-175-124.sa-east-1.compute.amazonaws.com:5000/ws-doc/
 
