@@ -24,6 +24,7 @@ python3 main.py runserver
 ```
 
 ## Build and Test
+![image](https://user-images.githubusercontent.com/34389493/148126158-15fc7dcc-c3cc-47a5-9384-2932c45b0d37.png)
 ### Run Test
 ```bash
 pytest -vs test
@@ -38,5 +39,7 @@ pytest -v --cov src --cov-report html --cov-config=.coveragerc test
 ```
 
 ## Arquitecture and other docs
-https://github.com/henry512/meli-challenger-mutant/blob/main/docs/Diagrama%20arquitectura%20meli-mutants.png?raw=true
+![image](https://user-images.githubusercontent.com/34389493/148126061-029386be-afc8-4644-a3c8-84b1b5baeb96.png)
+![image](https://user-images.githubusercontent.com/34389493/148126104-ee0ad57c-376c-4ee2-aecb-52441675883f.png)
+
 
