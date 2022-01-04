@@ -42,4 +42,6 @@ pytest -v --cov src --cov-report html --cov-config=.coveragerc test
 ![image](https://user-images.githubusercontent.com/34389493/148126061-029386be-afc8-4644-a3c8-84b1b5baeb96.png)
 ![image](https://user-images.githubusercontent.com/34389493/148126104-ee0ad57c-376c-4ee2-aecb-52441675883f.png)
 
+### Endpoints Collections - Postman
+./docs/meli-mutants.postman_collection.json
 
