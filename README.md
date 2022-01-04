@@ -3,6 +3,8 @@ Proyecto de evaluación propuesto por Mercado Libre
 
 ## Introduction
 meli-challenger-mutant comprende las funcionalidades y microservicios para el procesamiento y disponibilizacion de estadistica de secuencias de ADN en relación a su origen humano o mutante.
+### docs references
+source = ./docs/**
 
 ## Getting Started
 1.	Installation process
