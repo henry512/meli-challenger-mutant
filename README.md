@@ -3,15 +3,6 @@ Proyecto de evaluación propuesto por Mercado Libre
 
 ## Introduction
 meli-challenger-mutant comprende las funcionalidades y microservicios para el procesamiento y disponibilizacion de estadistica de secuencias de ADN en relación a su origen humano o mutante.
-### docs references
-source = ./docs/**
-  Diagrama arquitectura meli-mutants.png
-  Diagrama despliegue meli-mutants.png
-  Documento despliegue meli-mutants.docx
-  Examen Mercadolibre - Mutantes.pdf
-  coverage-report meli-mutants.png
-  meli-mutants.postman_collection.json
-and other files docs...
 
 ## Getting Started
 1.	Installation process
@@ -45,3 +36,7 @@ pytest -v --cov src --cov-report html test
 ```bash
 pytest -v --cov src --cov-report html --cov-config=.coveragerc test
 ```
+
+## Arquitecture and other docs
+https://github.com/henry512/meli-challenger-mutant/blob/main/docs/Diagrama%20arquitectura%20meli-mutants.png?raw=true
+
