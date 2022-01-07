@@ -7,11 +7,14 @@ from src.exceptions import (
 
 class DNA:
     """
-    Mutant valida el adn obtenido por medio de una lista List[str], y si esta cumple
-    una serie de verificaciones se puede decir que el adn es de un mutante
+    Valida el adn obtenido por medio de una lista List[str], y si esta cumple
+    una serie de verificaciones se puede decir que el adn es de un mutante o humano
     Example:
-        mutant = Mutant(["ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG"])
-        mutant.is_mutant()  -> True
+        dna = DNA(["ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG"])
+        dna.is_mutant()  -> True
+        
+        dna = DNA(["ZXVCVZ", "CZVXVC", "XXZXVX", "ZVZZVV", "CCCCXZ", "XCZCXV"], "ZXCV")
+        dna.is_mutant()  -> True
 
     NOTA: Para tener mayor referencia de esta clase leer la consigna.
         source= ./docs/Examen Mercadolibre - Mutants.pdf
